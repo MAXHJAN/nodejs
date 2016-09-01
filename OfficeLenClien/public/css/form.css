@@ -1,0 +1,33 @@
+.uploadimage{
+   border: solid 1px #bfbfbf; 
+    /*background-image: url(../images/image.png);
+    background-size:100%;*/
+    width:200px;
+    height:250px;
+    cursor:pointer;
+    /*background-repeat: no-repeat*/
+}
+.image{
+     width:200px;
+     height:250px;
+     padding: 1px;
+    display:block;
+    margin:0 auto;
+}
+.upload-container {
+            border: solid 1px #bfbfbf; 
+            background-image: url(../../images/upload.png);
+            background-color: #d3d3d3;
+            background-repeat: no-repeat;
+            background-size:100%;
+            width: 200px;
+            height: 250px;
+            display: inline-block;
+            vertical-align: middle;          
+        }
+.fileupload {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        width: 200px;
+         height: 250px;
+ }

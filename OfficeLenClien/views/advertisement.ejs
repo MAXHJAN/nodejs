@@ -1,0 +1,93 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<title><%= title %></title> 
+ <link rel="stylesheet" href="bootstrapt/css/bootstrap.min.css"/>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/form.css" rel="stylesheet" type="text/css" />
+
+<script src="javascripts/jquery-1.9.1.min.js"></script>
+<script src="bootstrapt/js/bootstrap.js"></script>
+<script type="text/javascript" src="javascripts/hhDrop.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#hhDrop00').hhDrop({});
+		$('#hhDrop01').hhDrop({});
+		$('#hhDrop02').hhDrop({});
+	});
+</script>
+
+</head>
+
+<body style="margin-top: 70px">
+	<% include topnav %>
+	<div class="container-fluid">
+		<div class="row">
+			<% include liftnav %>
+			<div class="col-sm-10 col-sm-offset-2">
+			<h3>&nbsp&nbsp广告投放地:</h3>
+				<div class="lineSearch" id="lineSearch">
+					<ul class="lineleft">
+						<li class="thRelative lineleft" id="hhDrop00">
+							<div class="boxSearch" id="citys">
+								<span class="key_word"><b class="size_14" id="city">请选择城市</b></span> <em
+									class="ico thLeft ico_shBlue"></em> <a id="ci"
+									class="thRight ico btn_search" href="javascript:void(0)"></a>
+							</div>
+							<div class="search_form_suggest" style="display: none;">
+								<h3>
+									<a class="ico btn_close thRight" item="close">关闭</a>城市
+								</h3>
+								<dl class="search_hotList lineleft" id="listcity">
+								</dl>
+								<div class="clear"></div>
+
+							</div>
+						</li>
+
+						<li class="thRelative lineleft" id="hhDrop01">
+							<div class="boxSearch" id="building">
+								<span class="key_word"><b class="size_14" id="build">请选择楼栋</b></span> <em
+									class="ico thLeft ico_shBlue"></em> <a
+									class="thRight ico btn_search" href="javascript:void(0)"></a>
+							</div>
+							<div class="search_form_suggest" style="display: none;">
+								<h3>
+									<a class="ico btn_close thRight" item="close">关闭</a>楼栋
+								</h3>
+								<dl class="search_hotList lineleft" id="listbuild">
+								</dl>
+								<div class="clear"></div>
+
+							</div>
+						</li>
+
+						<li class="thRelative lineleft" id="hhDrop02">
+							<div class="boxSearch" id="sps">
+								<span class="key_word"><b class="size_14" id="sp">请选择商铺</b></span> <em
+									class="ico thLeft ico_shBlue"></em> <a
+									class="thRight ico btn_search" href="javascript:void(0)"></a>
+							</div>
+							<div class="search_form_suggest" style="display: none;">
+								<h3>
+									<a class="ico btn_close thRight" item="close">关闭</a>商铺
+								</h3>
+								<dl class="search_hotList lineleft" id="listsp">
+								</dl>
+								<div class="clear"></div>
+							</div>
+						</li>
+						<li class="thRelative lineleft" id="hhDrop03">						
+					     <input class="form-control" type="text" id="distance" regex="/^-?\d+(\.\d+)?$/" placeholder="放大范围"/>													
+						</li>
+					</ul>					 
+				</div>				
+				<% include form %>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="javascripts/layer.js"></script>
+<script src="javascripts/laypage.js"></script>
+</html>

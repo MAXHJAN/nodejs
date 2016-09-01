@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" class="login-content" data-ng-app="materialAdmin">
+ <head>
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>MapOut</title>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+  <!-- Vendor CSS -->
+  <link href="stylesheets/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <link href="stylesheets/app.min.1.css" rel="stylesheet" type="text/css">
+ </head>
+ <body class="login-content" data-ng-controller="loginCtrl as lctrl">
+
+    <div class="lc-block" id="l-login" data-ng-class="{'toggled':lctrl.login === 1}">
+    	<h1 class="lean">MapOut</h1>
+   <form name="loginform" accept-charset="utf-8" method="post" id="login" onsubmit="return saveReport();">
+    	<div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-account"></i>
+    		</span>
+    		<div class="fg-line" id="usn">
+    			<input type="text" class="form-control" placeholder="用户名" regex="^\w{3,16}$" name="lusername" id="lusername"/>
+    		</div>
+    	</div>
+
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-male"></i>
+    		</span>
+    		<div class="fg-line" id="pas">
+    			<input type="password" class="form-control" placeholder="密码" regex="^\w+" name="lpasswd" id="lpasswd"/>
+    		</div>
+    	</div>
+    	
+    	<div class="clearfix"></div>
+    	
+    	<div class="checkbox">
+    		<label>
+    			<input type="checkbox" value="ck" name="lck" id="lck"/>
+    			<i class="input-helper">
+    				保持登录状态
+    			</i>
+    		</label>
+    	</div>
+        
+    	<button type="submit" class="btn btn-login btn-danger btn-float">
+    		<i class="zmdi zmdi-arrow-forward"></i>
+    	</button>
+    </form>
+        <ul class="login-navigation">
+        	<li class="bgm-red" data-ng-click="lctrl.login = 0; lctrl.register = 1">注册</li>
+        	<li data-block="#l-forget-password" class="bgm-orange" data-ng-click="lctrl.login = 0; lctrl.forgot = 1">忘记密码?</li>
+        </ul>
+    </div>
+    
+    <div class="lc-block" id="l-register" data-ng-class="{ 'toggled': lctrl.register === 1 }" data-ng-if="lctrl.register === 1">
+    	<h1 class="lean">MapOut</h1>
+   <form name="registerform" accept-charset="utf-8" method="post" id="register" onsubmit="return registerForm();">
+    	<div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-account"></i>
+    		</span>
+    		<div class="fg-line" id="rname">
+    			<input type="text" class="form-control" placeholder="用户名" regex="^\w{3,16}$" name="rusername" id="rusername"/>
+    		</div>
+    	</div>
+
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-email"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" class="form-control" placeholder="邮箱" regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$" name="remail" id="remail"/>
+    		</div>
+    	</div>
+
+		 <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-phone"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" class="form-control" placeholder="电话" regex="^1[3|4|5|7|8]\d{9}$" name="rphone" id="rphone"/>
+    		</div>
+    	</div>
+
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-male"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="password" class="form-control" placeholder="密码" regex="^\w+" name="rpasswd" id="rpasswd"/>
+    		</div>
+    	</div>
+    	
+    	<div class="clearfix"></div>
+    	
+    	<div class="checkbox">
+    		<label>
+    			<input type="checkbox" value="" name="rck" id="rck"/>
+    			<i class="input-helper"></i>
+    			接受许可协议
+    		</label>
+    	</div>
+    	
+    	<button type="submit" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></button>
+</form>
+    	<ul class="login-navigation">
+	      <li data-block="#l-login" class="bgm-green" data-ng-click="lctrl.register = 0; lctrl.login = 1">登录</li>
+	      <li data-block="#l-forget-password" class="bgm-orange" data-ng-click="lctrl.register = 0; lctrl.forgot = 1">忘记密码?</li>
+	    </ul>
+    </div>
+
+    <div class="lc-block" id="l-forget-password" data-ng-class="{ 'toggled': lctrl.forgot === 1 }" data-ng-if="lctrl.forgot === 1">
+    	<h1 class="lean">MapOut</h1>
+    	<p class="text-left">请输入注册时的邮箱用于找回你的密码.<br><br>.</p>
+    	<div class="input-group m-b-20">
+	      <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+	      <div class="fg-line">
+	        <input type="text" class="form-control" placeholder="邮箱地址" regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$" name="wemail" id="wemail"/>
+	      </div>
+	    </div>
+	
+	    <a href="" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+	
+	    <ul class="login-navigation">
+	      <li data-block="#l-login" class="bgm-green" data-ng-click="lctrl.forgot = 0; lctrl.login = 1">登录</li>
+	      <li data-block="#l-register" class="bgm-red" data-ng-click="lctrl.forgot = 0; lctrl.register = 1">注册</li>
+	    </ul>
+    </div>
+ </body>
+ 	
+ 	<!--<script src="javascripts/bower_components/jquery/dist/jquery.min.js"></script>-->
+	 <script src="javascripts/jquery-1.9.1.min.js"></script>
+	<script src="javascripts/jquery-form.js"></script>
+	<script src="javascripts/conn.js"></script>
+	<!-- Angular -->
+	<script src="javascripts/bower_components/angular/angular.min.js"></script>
+	<script src="javascripts/bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="javascripts/bower_components/angular-animate/angular-animate.min.js"></script>
+	
+	
+	<!-- Angular Modules -->
+	<script src="javascripts/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="javascripts/bower_components/angular-loading-bar/src/loading-bar.js"></script>
+	<script src="javascripts/bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+	<script src="javascripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	
+	<!-- Common js -->
+	<script src="javascripts/bower_components/angular-nouislider/src/nouislider.min.js"></script>
+	<script src="javascripts/bower_components/ng-table/dist/ng-table.min.js"></script>
+	
+	<!-- Placeholder for IE9 -->
+	<!--[if IE 9 ]>
+	    <script src="js/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+	<![endif]-->
+	<!-- App level -->
+	<script src="javascripts/app.js"></script>
+	<script src="javascripts/controllers/main.js"></script>
+	<script src="javascripts/controllers/ui-bootstrap.js"></script>
+	
+	
+	<!-- Template Modules -->
+	<script src="javascripts/modules/form.js"></script>
+	<!-- layer -->
+	<script src="javascripts/layer.js"></script>
+	<script src="javascripts/laypage.js"></script>
+</html>
